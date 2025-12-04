@@ -1,0 +1,243 @@
+<!-- Barra superior de redes sociales (alineada a la derecha) -->
+<div class="top-bar-sevillanea" id="topBar">
+  <div class="topbar-content">
+    <div class="social-icons">
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="assets/imagenes/instagram.png" alt="Instagram" class="icono-red" />
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.tiktok.com/es-419/" target="_blank">
+        <img src="assets/imagenes/tiktok.png" alt="TikTok" class="icono-red" />
+        <span>TikTok</span>
+      </a>
+      <a href="https://www.youtube.com/" target="_blank">
+        <img src="assets/imagenes/youtube.png" alt="YouTube" class="icono-red" />
+        <span>YouTube</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar principal (menú de la cabecera principal) -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a routerLink="/" class="navbar-logo">
+      <img src="assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-izquierda" />
+    </a>
+    <ul class="navbar-menu">
+      <li><a routerLink="/">Inicio</a></li>
+      <li><a routerLink="/ofertantes">Actividades</a></li>
+      <li><a routerLink="/consumidores">Comunidad</a></li>
+      <li><a routerLink="/">Contacto</a></li>
+
+
+      <!--  Esto es para que cuando el usuario haya iniciado sesión se sustituya el componente usuario-login
+        por perfil-->
+
+      <li [class.hidden]="isLoggedIn"><a routerLink="/login">Iniciar sesión</a></li>
+
+      <li [class.hidden]="!isLoggedIn">
+        <a [routerLink]="['/perfil', usuario?.id]">Tu perfil</a>
+      </li>
+      <li [class.hidden]="isLoggedIn">
+        <a routerLink="/registro">Regístrate</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<!-- Sección cabecera "CONTACTO" -->
+<section class="ofertantes-header">
+  <div class="overlay"></div>
+  <div class="ofertantes-header-content">
+    <h1>CONTACTO</h1>
+  </div>
+</section>
+
+
+
+
+<!-- SECCIÓN DE INFORMACIÓN DE CONTACTO -->
+<section class="contacto-info">
+  <div class="contacto-cajas">
+
+    <!-- Caja Email -->
+    <div class="contact-card">
+      <img src="assets/imagenes/email.png" alt="Email" class="contact-icon" />
+      <h3>Correo electrónico</h3>
+      <p>infosevillanea.com</p>
+    </div>
+
+    <!-- Caja Teléfono -->
+    <div class="contact-card">
+      <img src="assets/imagenes/telefono.png" alt="Teléfono" class="contact-icon" />
+      <h3>Teléfono</h3>
+      <p>954 00 00 00</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SECCIÓN FORMULARIO -->
+
+<!-- Mensaje -->
+<div class="contacto-form">
+
+  <h2 class="titulo-contacto">Envíanos un mensaje</h2>
+
+  <form [formGroup]="contactoForm" (ngSubmit)="enviarFormulario()">
+
+    <!-- Nombre -->
+    <div class="form-row">
+      <input type="text" placeholder="Tu nombre" formControlName="nombre" />
+    </div>
+
+    <div
+      [hidden]="!(contactoForm.controls['nombre'].invalid && (contactoForm.controls['nombre'].dirty || contactoForm.controls['nombre'].touched))">
+
+      <div [hidden]="!contactoForm.controls['nombre'].errors?.['required']" class="alert alert-danger">
+        El nombre es obligatorio
+      </div>
+
+      <div [hidden]="!contactoForm.controls['nombre'].errors?.['minlength']" class="alert alert-danger">
+        El nombre debe tener al menos 2 caracteres
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-row">
+      <input type="email" placeholder="Tu email" formControlName="email" />
+    </div>
+
+    <div
+      [hidden]="!(contactoForm.controls['email'].invalid && (contactoForm.controls['email'].dirty || contactoForm.controls['email'].touched))">
+
+      <div [hidden]="!contactoForm.controls['email'].errors?.['required']" class="alert alert-danger">
+        El email es obligatorio
+      </div>
+
+      <div [hidden]="!contactoForm.controls['email'].errors?.['email']" class="alert alert-danger">
+        Introduce un email válido
+      </div>
+
+    </div>
+
+    <!-- Mensaje -->
+    <textarea placeholder="Escribe tu mensaje..." formControlName="mensaje"></textarea>
+
+    <div
+      [hidden]="!(contactoForm.controls['mensaje'].invalid && (contactoForm.controls['mensaje'].dirty || contactoForm.controls['mensaje'].touched))">
+
+      <div [hidden]="!contactoForm.controls['mensaje'].errors?.['required']" class="alert alert-danger">
+        El mensaje es obligatorio
+      </div>
+
+      <div [hidden]="!contactoForm.controls['mensaje'].errors?.['minlength']" class="alert alert-danger">
+        El mensaje debe tener al menos 10 caracteres
+      </div>
+
+    </div>
+
+    <!-- Privacidad -->
+    <div class="form-check">
+      <input type="checkbox" formControlName="privacidad" />
+      <label>Acepto la política de privacidad</label>
+    </div>
+
+    <div
+      [hidden]="!(contactoForm.controls['privacidad'].invalid && (contactoForm.controls['privacidad'].dirty || contactoForm.controls['privacidad'].touched))">
+      <div class="alert alert-danger">
+        Debes aceptar la política de privacidad
+      </div>
+    </div>
+
+    <!-- Botón -->
+    <button type="submit" class="btn-enviar" [disabled]="!contactoForm.valid">
+      Enviar mensaje
+    </button>
+
+  </form>
+
+  <!-- Msg éxito -->
+  <div id="msgExito" class="mensaje-exito">
+    ¡Tu mensaje ha sido enviado correctamente!
+  </div>
+
+  <!-- Msg error -->
+  <div id="msgError" class="mensaje-error">
+    No se pudo enviar el mensaje. Inténtalo más tarde.
+  </div>
+
+</div>
+
+<!-- SECCIÓN MAPA 
+Sección de la página que muestra un mapa. Contiene un título 
+y un mapa de Google Maps incrustado para que los usuarios vean cómo llegar. 
+-->
+
+<section class="mapa-section">
+  <h2 class="titulo-mapa">Cómo llegar</h2>
+
+  <div class="map-container">
+    <!-- IFRAME que incrusta un mapa de Google Maps  
+    -->
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.9948925527084!2d-5.988757423437735!3d37.39251193724626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd126c1130c2e0c7%3A0x4f739ff8c39b4db!2sC.%20Francisco%20Carri%C3%B3n%20Mej%C3%ADas%2C%2010%2C%20Casco%20Antiguo%2C%2041003%20Sevilla!5e0!3m2!1ses!2ses!4v1707089999999"
+      width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"> <!--Politica de seguridad del navegador-->
+    </iframe>
+  </div>
+</section>
+
+
+<!-- SECCIÓN FINAL SEVILLANEA -->
+
+
+<section class="bloque-final-sevillanea">
+  <div class="bloque-container">
+    <div class="bloque-column">
+      <img src="../../../assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-final" />
+      <p>Descubre, organiza y comparte experiencias únicas en Sevilla. No solo puedes disfrutar de las mejores
+        actividades de ocio, sino
+        también convertirte en el organizador: publica tus propias propuestas y haz que otros usuarios vivan la ciudad a
+        través de tu arte, tu pasión y tu visión.</p>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Guía de...</h3>
+      <ul>
+        <li><a routerLink="/ofertantes" (click)="scrollTop()">Ofertas de actividades</a></li>
+        <li><a routerLink="/consumidores" (click)="scrollTop()">Demandas de actividades</a></li>
+      </ul>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Información</h3>
+      <ul>
+        <li><a routerLink="/quienesSomos" (click)="scrollTop()">Quiénes Somos</a></li>
+        <li><a routerLink="/privacidad" (click)="scrollTop()">Política de privacidad</a></li>
+        <li><a routerLink="/cookies" (click)="scrollTop()">Política de cookies</a></li>
+        <li><a routerLink="/contacto" (click)="scrollTop()">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="bloque-column">
+      <h3>¿Hablamos?</h3>
+      <p>📞 954 00 00 00</p>
+      <p>📧 infosevillanea.com</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER FINAL DE LA PÁGINA-->
+<footer class="py-4 bg-dark text-light text-center">
+  <div class="container">
+    <p class="mb-1">© 2025 <strong>Sevillanea</strong> · Vive Sevilla con arte</p>
+  </div>
+</footer>

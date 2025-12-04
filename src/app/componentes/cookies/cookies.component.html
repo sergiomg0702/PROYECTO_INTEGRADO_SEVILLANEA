@@ -1,0 +1,215 @@
+<!-- Barra superior de redes sociales (alineada a la derecha) -->
+<div class="top-bar-sevillanea" id="topBar">
+  <div class="topbar-content">
+    <div class="social-icons">
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="assets/imagenes/instagram.png" alt="Instagram" class="icono-red" />
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.tiktok.com/es-419/" target="_blank">
+        <img src="assets/imagenes/tiktok.png" alt="TikTok" class="icono-red" />
+        <span>TikTok</span>
+      </a>
+      <a href="https://www.youtube.com/" target="_blank">
+        <img src="assets/imagenes/youtube.png" alt="YouTube" class="icono-red" />
+        <span>YouTube</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar principal (menú de la cabecera principal) -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a routerLink="/" class="navbar-logo">
+      <img src="assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-izquierda" />
+    </a>
+    <ul class="navbar-menu">
+      <li><a routerLink="/">Inicio</a></li>
+      <li><a routerLink="/ofertantes">Actividades</a></li>
+      <li><a routerLink="/consumidores">Comunidad</a></li>
+      <li><a routerLink="/">Contacto</a></li>
+
+
+      <!--  Esto es para que cuando el usuario haya iniciado sesión se sustituya el componente usuario-login
+        por perfil-->
+
+      <li [class.hidden]="isLoggedIn"><a routerLink="/login">Iniciar sesión</a></li>
+
+      <li [class.hidden]="!isLoggedIn">
+        <a [routerLink]="['/perfil', usuario?.id]">Tu perfil</a>
+      </li>
+      <li [class.hidden]="isLoggedIn">
+        <a routerLink="/registro">Regístrate</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<!-- Sección cabecera "COOKIES" -->
+<section class="ofertantes-header">
+  <div class="overlay"></div>
+  <div class="ofertantes-header-content">
+    <h1>POLÍTICA DE COOKIES</h1>
+  </div>
+</section>
+
+
+<!-- ================================
+     SECCIÓN DE POLÍTICA DE COOKIES
+=================================== -->
+<section class="privacidad-container">
+
+  <!-- Intro -->
+  <div class="privacidad-bloque fade-in">
+    <h2>Política de Cookies</h2>
+    <p>
+      En <strong>Sevillanea</strong> utilizamos cookies para mejorar tu experiencia de usuario,
+      analizar el rendimiento del sitio y ofrecerte contenido personalizado.
+      En esta página te explicamos qué son, qué tipos usamos y cómo puedes gestionarlas.
+    </p>
+  </div>
+
+  <!-- ¿Qué son? -->
+  <div class="privacidad-bloque fade-in">
+    <h3>1. ¿Qué son las cookies?</h3>
+    <p>
+      Las cookies son pequeños archivos de datos que se almacenan en tu dispositivo cuando visitas
+      una página web. Permiten que el sitio recuerde información sobre tu visita, como tus preferencias
+      o acciones anteriores.
+    </p>
+  </div>
+
+  <!-- Tipos de cookies -->
+  <div class="privacidad-bloque fade-in">
+    <h3>2. Tipos de cookies que utilizamos</h3>
+
+    <h4>2.1. Cookies técnicas (obligatorias)</h4>
+    <p>
+      Permiten que la web funcione correctamente: iniciar sesión, cargar la página, seguridad, etc.
+    </p>
+
+    <h4>2.2. Cookies de preferencias</h4>
+    <p>
+      Guardan ajustes como idioma o configuración seleccionada por el usuario.
+    </p>
+
+    <h4>2.3. Cookies de análisis</h4>
+    <p>
+      Nos permiten analizar cómo los usuarios navegan por Sevillanea para mejorar la plataforma.
+      Por ejemplo, páginas más visitadas o errores detectados.
+    </p>
+
+    <h4>2.4. Cookies de terceros</h4>
+    <p>Entre ellas:</p>
+    <ul>
+      <li>Cookies de Google Analytics</li>
+      <li>Cookies de redes sociales (Instagram, TikTok, YouTube)</li>
+      <li>Cookies de servicios integrados (videos, mapas, etc.)</li>
+    </ul>
+  </div>
+
+  <!-- Finalidad -->
+  <div class="privacidad-bloque fade-in">
+    <h3>3. ¿Para qué utilizamos cookies?</h3>
+    <ul>
+      <li>Mejorar la velocidad y seguridad de la web.</li>
+      <li>Recordar tus ajustes y preferencias.</li>
+      <li>Analizar el rendimiento y detectar fallos.</li>
+      <li>Ofrecer contenido relevante y adaptado a ti.</li>
+      <li>Facilitar la interacción con redes sociales.</li>
+    </ul>
+  </div>
+
+  <!-- Gestión -->
+  <div class="privacidad-bloque fade-in">
+    <h3>4. ¿Cómo puedes gestionar o desactivar las cookies?</h3>
+    <p>
+      Puedes permitir, bloquear o eliminar las cookies instaladas en tu dispositivo
+      a través de la configuración de tu navegador. Aquí tienes enlaces directos:
+    </p>
+    <ul>
+      <li><a href="https://support.google.com/chrome/answer/95647" target="_blank">Google Chrome</a></li>
+      <li><a href="https://support.mozilla.org/es/kb/Borrar%20cookies" target="_blank">Mozilla Firefox</a></li>
+      <li><a href="https://support.apple.com/es-es/HT201265" target="_blank">Safari</a></li>
+      <li><a href="https://support.microsoft.com/es-es/help/17442/windows-internet-explorer-delete-manage-cookies"
+          target="_blank">Internet Explorer / Edge</a></li>
+    </ul>
+
+    <p>
+      Ten en cuenta que desactivar cookies puede afectar al funcionamiento de algunas partes de Sevillanea.
+    </p>
+  </div>
+
+  <!-- Terceros -->
+  <div class="privacidad-bloque fade-in">
+    <h3>5. Cookies de terceros</h3>
+    <p>
+      Algunas funciones de Sevillanea dependen de servicios externos como Google, Meta o TikTok,
+      los cuales pueden instalar sus propias cookies cuando interactúas con ellos desde nuestra web.
+    </p>
+  </div>
+
+  <!-- Actualización -->
+  <div class="privacidad-bloque fade-in">
+    <h3>6. Actualización de esta política</h3>
+    <p>
+      Esta política puede actualizarse para adaptarse a cambios legales o mejoras tecnológicas.
+      Publicaremos siempre la versión más reciente en esta página.
+    </p>
+  </div>
+
+</section>
+
+
+
+<!-- SECCIÓN FINAL SEVILLANEA -->
+
+
+<section class="bloque-final-sevillanea">
+  <div class="bloque-container">
+    <div class="bloque-column">
+      <img src="../../../assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-final" />
+      <p>Descubre, organiza y comparte experiencias únicas en Sevilla. No solo puedes disfrutar de las mejores
+        actividades de ocio, sino
+        también convertirte en el organizador: publica tus propias propuestas y haz que otros usuarios vivan la ciudad a
+        través de tu arte, tu pasión y tu visión.</p>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Guía de...</h3>
+      <ul>
+        <li><a routerLink="/ofertantes" (click)="scrollTop()">Ofertas de actividades</a></li>
+        <li><a routerLink="/consumidores" (click)="scrollTop()">Demandas de actividades</a></li>
+      </ul>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Información</h3>
+      <ul>
+        <li><a routerLink="/quienesSomos" (click)="scrollTop()">Quiénes Somos</a></li>
+        <li><a routerLink="/privacidad" (click)="scrollTop()">Política de privacidad</a></li>
+        <li><a routerLink="/cookies" (click)="scrollTop()">Política de cookies</a></li>
+        <li><a routerLink="/contacto" (click)="scrollTop()">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="bloque-column">
+      <h3>¿Hablamos?</h3>
+      <p>📞 954 00 00 00</p>
+      <p>📧 infosevillanea.com</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER FINAL DE LA PÁGINA-->
+<footer class="py-4 bg-dark text-light text-center">
+  <div class="container">
+    <p class="mb-1">© 2025 <strong>Sevillanea</strong> · Vive Sevilla con arte</p>
+  </div>
+</footer>

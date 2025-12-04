@@ -1,0 +1,135 @@
+<!-- Barra superior de redes sociales (alineada a la derecha) -->
+<div class="top-bar-sevillanea" id="topBar">
+  <div class="topbar-content">
+    <div class="social-icons">
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="assets/imagenes/instagram.png" alt="Instagram" class="icono-red" />
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.tiktok.com/es-419/" target="_blank">
+        <img src="assets/imagenes/tiktok.png" alt="TikTok" class="icono-red" />
+        <span>TikTok</span>
+      </a>
+      <a href="https://www.youtube.com/" target="_blank">
+        <img src="assets/imagenes/youtube.png" alt="YouTube" class="icono-red" />
+        <span>YouTube</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar principal (menú de la cabecera principal) -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a routerLink="/" class="navbar-logo">
+      <img src="assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-izquierda" />
+    </a>
+    <ul class="navbar-menu">
+      <li><a routerLink="/">Inicio</a></li>
+      <li><a routerLink="/ofertantes">Actividades</a></li>
+      <li><a routerLink="/consumidores">Comunidad</a></li>
+      <li><a routerLink="/">Contacto</a></li>
+
+
+      <!--  Esto es para que cuando el usuario haya iniciado sesión se sustituya el componente usuario-login
+        por perfil-->
+
+      <li [class.hidden]="isLoggedIn"><a routerLink="/login">Iniciar sesión</a></li>
+
+      <li [class.hidden]="!isLoggedIn">
+        <a [routerLink]="['/perfil', usuario?.id]">Tu perfil</a>
+      </li>
+      <li [class.hidden]="isLoggedIn">
+        <a routerLink="/registro">Regístrate</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- Sección cabecera "TU PERFIL" -->
+<section class="ofertantes-header">
+  <div class="overlay"></div>
+  <div class="ofertantes-header-content">
+    <h1>TU CUENTA</h1>
+  </div>
+</section>
+
+
+<!-- Sección cabecera "TU CUENTA" -->
+
+<!-- esto es para que haya un espacio entre la cabecera y la sección,para que no se vea tan pegado -->
+<div class="perfil-header-espaciado"></div>
+
+<!-- CONTENEDOR GENERAL DEL PERFIL -->
+<div class="perfil-wrapper">
+
+  <div class="perfil-card">
+
+    <h2 class="perfil-titulo">Perfil de {{ usuarioNombre }}</h2>
+
+    <div class="perfil-info">
+      <p><span>Email:</span> {{ usuarioEmail }}</p>
+    </div>
+
+    <div class="perfil-botones">
+      <button class="btn-perfil primary" (click)="verActividades()">Ver Actividades</button>
+      <button class="btn-perfil danger" (click)="borrarUsuario()">Eliminar usuario</button>
+      <button class="btn-perfil secondary" (click)="cerrarSesion()">Cerrar sesión</button>
+      <button class="btn-perfil secondary" [routerLink]="['/perfilEditar', usuarioId]">
+        Modificar usuario
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- SECCIÓN FINAL SEVILLANEA -->
+
+
+<section class="bloque-final-sevillanea">
+  <div class="bloque-container">
+    <div class="bloque-column">
+      <img src="../../../assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-final" />
+      <p>Descubre, organiza y comparte experiencias únicas en Sevilla. No solo puedes disfrutar de las mejores
+        actividades de ocio, sino
+        también convertirte en el organizador: publica tus propias propuestas y haz que otros usuarios vivan la ciudad a
+        través de tu arte, tu pasión y tu visión.</p>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Guía de...</h3>
+      <ul>
+        <li><a routerLink="/ofertantes" (click)="scrollTop()">Ofertas de actividades</a></li>
+        <li><a routerLink="/consumidores" (click)="scrollTop()">Demandas de actividades</a></li>
+      </ul>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Información</h3>
+      <ul>
+        <li><a routerLink="/quienesSomos" (click)="scrollTop()">Quiénes Somos</a></li>
+        <li><a routerLink="/privacidad" (click)="scrollTop()">Política de privacidad</a></li>
+        <li><a routerLink="/cookies" (click)="scrollTop()">Política de cookies</a></li>
+        <li><a routerLink="/contacto" (click)="scrollTop()">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="bloque-column">
+      <h3>¿Hablamos?</h3>
+      <p>📞 954 00 00 00</p>
+      <p>📧 infosevillanea.com</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER FINAL DE LA PÁGINA-->
+<footer class="py-4 bg-dark text-light text-center">
+  <div class="container">
+    <p class="mb-1">© 2025 <strong>Sevillanea</strong> · Vive Sevilla con arte</p>
+  </div>
+</footer>

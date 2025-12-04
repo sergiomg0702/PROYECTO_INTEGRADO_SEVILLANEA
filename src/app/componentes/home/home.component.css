@@ -1,0 +1,594 @@
+
+/* 🔝 MENÚ NEGRO */
+.top-bar-sevillanea {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #111;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+.topbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+.social-icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.social-icons a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+.social-icons a:hover {
+  color: #ffab60;
+}
+.icono-red {
+  height: 20px;
+  margin-right: 8px;
+}
+
+/* 🔸 NAVBAR (ya con fondo albero) */
+.navbar {
+  position: fixed;
+  top: 40px;
+  width: 100%;
+  height: 100px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: top 0.4s ease, background-color 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+.navbar-container {
+  max-width: 1500px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo alineado a la izquierda */
+.navbar-logo {
+  display: fixed;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo-izquierda {
+  height: 100px;
+  width: 250px;
+  object-fit: contain; /* mantiene proporciones sin deformar */
+  transition: all 0.3s ease;
+}
+
+/* Menú centrado horizontalmente */
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+/*Estilo de enlaces del menú con animación dorada */
+.navbar-menu li a {
+  position: relative;
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  transition: color 0.4s ease;
+}
+
+/*Línea animada inferior en hover */
+.navbar-menu li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #ffab60 0%, #ffd59e 100%);
+  transition: width 0.4s ease;
+}
+
+/*Efecto hover */
+.navbar-menu li a:hover {
+  color: #ffab60;
+  text-shadow: 0 0 8px rgba(255, 171, 96, 0.6);
+}
+.navbar-menu li a:hover::after {
+  width: 100%;
+}
+
+/* EFECTO DE SCROLL */
+.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+}
+.fixed-top {
+  top: 0 !important;
+}
+.small-logo {
+  height: 100px !important; /* Mantiene su tamaño original */
+  width: 250px !important;
+  object-fit: contain;
+}
+
+/*Con esto evitamos que el logo cambie de tamaño al hacer scroll */
+.logo-izquierda,
+.small-logo {
+  height: 100px !important;
+  width: 250px !important;
+  object-fit: contain;
+  transition: none !important;
+}
+
+/* Mensaje de bienvenida */
+
+.mensaje-bienvenida-fijo {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  color: #fff;
+  text-align: center;
+  padding: 15px 30px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ffab60, #d32f2f);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  opacity: 0;
+  pointer-events: none; /* para que no moleste si está invisible */
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  cursor: default;
+}
+
+/* Clase para mostrar el mensaje */
+.mensaje-bienvenida-fijo.visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Animación de entrada tipo “slide + bounce” */
+@keyframes slideBounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  80% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* HERO */
+/* Mantenemos la imagen pero aplicamos overlay naranja suave para integración */
+
+.hero {
+  height: 100vh;
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.4),
+      rgba(255, 171, 96, 0.45)
+    ),
+    url("../../../assets/imagenes/cabecera.jpg");
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 0 20px;
+  font-family: "Poppins", sans-serif;
+}
+
+.hero-content {
+  max-width: 800px;
+  animation: fadeInUp 1.5s ease;
+}
+
+.hero h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 3.2rem;
+  font-weight: 700;
+  color: #ffab60; /* dorado luminoso que resalta */
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.4);
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  color: #fff3d5;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.text-sevillanea {
+  color: white;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 203, 77, 0.6);
+}
+
+/* Animación al entrar */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn-sevillanea {
+  color: white;
+  padding: 12px 25px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar-container {
+    flex-direction: column;
+  }
+  .navbar-menu {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* ================= ACTIVIDADES ================= */
+.actividades {
+  padding: 60px 20px;
+}
+
+.titulo-seccion {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+/* Contenedor tarjetas con CSS Grid */
+.tarjetas {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas iguales */
+  gap: 20px; /* espacio entre tarjetas */
+  justify-content: center; /* centra el grid si no llena todo el ancho */
+}
+
+/* Estilo de cada tarjeta */
+.tarjeta {
+  background-color: rgba(255, 171, 96, 0.18);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s;
+}
+
+.tarjeta:hover {
+  transform: translateY(-5px);
+}
+
+.tarjeta img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.contenido {
+  padding: 20px;
+  color: #222;
+}
+
+.boton {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: 2px solid;
+  text-decoration: none;
+  color: #111;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.boton:hover {
+  color: #ffab60;
+}
+
+/* Responsive: menos columnas en pantallas pequeñas */
+@media (max-width: 900px) {
+  .tarjetas {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  }
+}
+
+@media (max-width: 600px) {
+  .tarjetas {
+    grid-template-columns: 1fr; /* 1 columna */
+  }
+}
+
+/* ================= SOBRE NOSOTROS ================= */
+
+/* Sección “Únete como ofertante” */
+.ofertante-section {
+  position: relative;
+  background-image: url("../../../assets/imagenes/unete-ofertante.png");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  overflow: hidden;
+}
+
+/* Capa de color con efecto */
+.ofertante-section .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(rgba(161, 106, 44, 0.8), rgba(255, 171, 96, 0.5));
+  z-index: 1;
+}
+
+/* Contenido */
+.ofertante-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 40px;
+  animation: fadeIn 1.5s ease;
+}
+
+.ofertante-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  color: #fff3d5;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 1px;
+}
+
+.ofertante-content h2 span {
+  color: #ffab60;
+}
+
+.ofertante-content p {
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* Botón */
+.btn-unete {
+  background-color: #ffab60;
+  color: #fff;
+  padding: 14px 35px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-unete:hover {
+  background-color: #ffab60;
+  color: #111;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+}
+
+/*Animación de aparición */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ofertante-section {
+    height: auto;
+    padding: 80px 20px;
+    background-attachment: scroll;
+  }
+
+  .ofertante-content h2 {
+    font-size: 2rem;
+  }
+
+  .ofertante-content p {
+    font-size: 1rem;
+  }
+}
+
+/* ================= FOOTER SEVILLANEA================= */
+
+.bloque-final-sevillanea {
+  background: linear-gradient(180deg, #ffb776, #ff9f4a);
+  border-top: 4px solid #c62828;
+  padding: 60px 25px;
+  font-family: "Merriweather", serif;
+  color: #2c2c2c;
+}
+
+.bloque-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.bloque-column {
+  flex: 1 1 240px;
+  min-width: 220px;
+}
+
+.logo-final {
+  width: 190px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Títulos de columna */
+.bloque-column h3 {
+  font-size: 20px;
+  font-family: "Playfair Display", serif;
+  color: #b71c1c;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+/* Línea decorativa bajo los títulos */
+.bloque-column h3::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #b71c1c;
+  border-radius: 2px;
+}
+
+/* Listas */
+.bloque-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bloque-column ul li {
+  margin-bottom: 10px;
+}
+
+/* ENLACES llamativos con animación */
+.bloque-column ul li a {
+  text-decoration: none;
+  color: #2c2c2c;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+/* Subrayado animado */
+.bloque-column ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: #b71c1c;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.bloque-column ul li a:hover {
+  color: #b71c1c;
+}
+
+.bloque-column ul li a:hover::after {
+  width: 100%;
+}
+
+/* Textos del bloque final */
+.bloque-column p {
+  margin: 6px 0;
+  font-size: 15px;
+  line-height: 1.6;
+  font-family: "Merriweather", serif;
+  color: #3a3a3a;
+}
+
+/* ================= FOOTER BOTTOM (FINAL) ================= */
+
+footer.py-4 {
+  background-color: #121212;
+  color: #f5f5f5;
+  padding: 25px 10px;
+  border-top: 3px solid #b71c1c;
+}
+
+footer p {
+  margin: 0;
+  font-size: 15.5px;
+  letter-spacing: 0.5px;
+  font-family: "Playfair Display", serif;
+  opacity: 0.9;
+  transition: 0.3s ease;
+}
+
+/* Efecto glow suave en hover */
+footer p:hover {
+  opacity: 1;
+  text-shadow: 0px 0px 8px rgba(255, 160, 122, 0.6);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .bloque-container {
+    flex-direction: column;
+  }
+
+  .bloque-column {
+    margin-bottom: 20px;
+  }
+}
+
+/* ================= PARA EL INICIO DE SESION ================= */
+
+.hidden {
+  display: none;
+}

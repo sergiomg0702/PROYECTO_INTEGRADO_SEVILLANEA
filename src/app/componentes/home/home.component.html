@@ -1,0 +1,200 @@
+<!--  Menú negro de redes sociales (siempre arriba) -->
+<div class="top-bar-sevillanea" id="topBar">
+  <div class="topbar-content">
+    <div class="social-icons">
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="assets/imagenes/instagram.png" alt="Instagram" class="icono-red" />
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.tiktok.com/es-419/" target="_blank">
+        <img src="assets/imagenes/tiktok.png" alt="TikTok" class="icono-red" />
+        <span>TikTok</span>
+      </a>
+      <a href="https://www.youtube.com/" target="_blank">
+        <img src="assets/imagenes/youtube.png" alt="YouTube" class="icono-red" />
+        <span>YouTube</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!--  Menú blanco que sube y reemplaza al negro -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a routerLink="/" class="navbar-logo">
+      <img src="assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-izquierda" />
+    </a>
+    <ul class="navbar-menu">
+      <li><a routerLink="/">Inicio</a></li>
+      <li><a routerLink="/ofertantes">Actividades</a></li>
+      <li><a routerLink="/consumidores">Comunidad</a></li>
+      <li><a routerLink="/contacto">Contacto</a></li>
+
+
+
+      <!--  Esto es para que cuando el usuario haya iniciado sesión se sustituya el componente usuario-login
+        por perfil-->
+
+      <li [class.hidden]="isLoggedIn"><a routerLink="/login">Iniciar sesión</a></li>
+
+      <li [class.hidden]="!isLoggedIn">
+        <a [routerLink]="['/perfil', usuario?.id]">Tu perfil</a>
+      </li>
+
+
+      <li [class.hidden]="isLoggedIn">
+        <a routerLink="/registro">Regístrate</a>
+      </li>
+
+
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+
+    <!-- Mensaje de bienvenida una vez el usuario ha inciado sesión en la aplicación -->
+    <div [class.visible]="isLoggedIn" class="mensaje-bienvenida-fijo">
+      ¡Bienvenido, {{ usuarioNombre }}!
+    </div>
+
+    <h1>Descubre las mejores actividades</h1>
+    <h1>
+      <span class="text-sevillanea">SEVILLANEA</span>
+    </h1>
+    <a routerLink="/ofertantes" class="btn-sevillanea">Ver Actividades</a>
+
+
+  </div>
+</section>
+
+<!-- Sección de actividades destacadas -->
+<section id="actividades" class="actividades">
+  <div class="contenedor">
+    <h2 class="titulo-seccion">Actividades Destacadas</h2>
+
+    <div class="tarjetas">
+
+      <div class="tarjeta">
+        <img src="assets/imagenes/kayak.jpg" alt="Kayak Guadalquivir" />
+        <div class="contenido">
+          <h3>Ruta en Kayak por el Guadalquivir</h3>
+          <p>Vive una experiencia navegando por el río Guadalquivir.</p>
+          <a href="#" class="boton">Ver más</a>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <img src="assets/imagenes/flamenco.jpg" alt="Clases de flamenco" />
+        <div class="contenido">
+          <h3>Clases de Flamenco</h3>
+          <p>Aprende los pasos básicos del arte flamenco.</p>
+          <a href="#" class="boton">Ver más</a>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <img src="assets/imagenes/bicicleta.jpg" alt="Tour en bicicleta" />
+        <div class="contenido">
+          <h3>Tour en bici por Triana</h3>
+          <p>Recorre los rincones más auténticos en uno de los barrios más populares de la ciudad.</p>
+          <a href="#" class="boton">Ver más</a>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <img src="assets/imagenes/cerveza.jpg" alt="Cerveza en el Salvador" />
+        <div class="contenido">
+          <h3>Cerveceo en el Salvador</h3>
+          <p>Disfruta de una cerveza en un sitio clave de la ciudad como es la plaza del salvador.</p>
+          <a href="#" class="boton">Ver más</a>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <img src="assets/imagenes/panaderos.jpg" alt="Hermandad de los Panaderos" />
+        <div class="contenido">
+          <h3>Visita la Hermandad de los Panaderos</h3>
+          <p>Conoce una de las cofradías más emblemáticas del miércoles santo.</p>
+          <a href="#" class="boton">Ver más</a>
+        </div>
+      </div>
+
+      <div class="tarjeta">
+        <img src="assets/imagenes/estadioSevilla.jpg" alt="Tour SevillaFC" />
+        <div class="contenido">
+          <h3>Tour por el Estadio Ramón Sánchez Pizjuán</h3>
+          <p>Visita el estadio del Sevilla FC y verás algo único,7 copas de la Europa League unidas</p>
+          <a href="#" class="boton">Ver más</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Sección sobre nosotros / Únete como ofertante -->
+<section class="ofertante-section">
+  <div class="overlay"></div>
+  <div class="ofertante-content">
+    <h2>¿Quieres unirte como <span>ofertante</span>?</h2>
+    <p>Forma parte de la comunidad <strong>Sevillanea</strong> y comparte tu arte, tu experiencia y tu pasión por
+      Sevilla.</p>
+    <a routerLink="/oferta/-1" class="btn-unete" (click)="scrollTop()">Únete ahora</a>
+  </div>
+</section>
+
+
+
+<!-- SECCIÓN FINAL SEVILLANEA -->
+
+
+<section class="bloque-final-sevillanea">
+  <div class="bloque-container">
+    <div class="bloque-column">
+      <img src="../../../assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-final" />
+      <p>Descubre, organiza y comparte experiencias únicas en Sevilla. No solo puedes disfrutar de las mejores
+        actividades de ocio, sino
+        también convertirte en el organizador: publica tus propias propuestas y haz que otros usuarios vivan la ciudad a
+        través de tu arte, tu pasión y tu visión.</p>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Guía de...</h3>
+      <ul>
+        <li><a routerLink="/ofertantes">Ofertas de actividades</a></li>
+        <li><a routerLink="/consumidores">Demandas de actividades</a></li>
+      </ul>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Información</h3>
+      <ul>
+        <li><a routerLink="/quienesSomos" (click)="scrollTop()">Quiénes Somos</a></li>
+        <li><a routerLink="/privacidad" (click)="scrollTop()">Política de privacidad</a></li>
+        <li><a routerLink="/cookies" (click)="scrollTop()">Política de cookies</a></li>
+        <li><a routerLink="/contacto" (click)="scrollTop()">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="bloque-column">
+      <h3>¿Hablamos?</h3>
+      <p>📞 954 00 00 00</p>
+      <p>📧 infosevillanea.com</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER FINAL DE LA PÁGINA-->
+<footer class="py-4 bg-dark text-light text-center">
+  <div class="container">
+    <p class="mb-1">© 2025 <strong>Sevillanea</strong> · Vive Sevilla con arte</p>
+  </div>
+</footer>

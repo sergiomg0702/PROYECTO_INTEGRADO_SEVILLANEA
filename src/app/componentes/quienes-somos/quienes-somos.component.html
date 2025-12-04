@@ -1,0 +1,189 @@
+<!-- Barra superior de redes sociales (alineada a la derecha) -->
+<div class="top-bar-sevillanea" id="topBar">
+  <div class="topbar-content">
+    <div class="social-icons">
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="assets/imagenes/instagram.png" alt="Instagram" class="icono-red" />
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.tiktok.com/es-419/" target="_blank">
+        <img src="assets/imagenes/tiktok.png" alt="TikTok" class="icono-red" />
+        <span>TikTok</span>
+      </a>
+      <a href="https://www.youtube.com/" target="_blank">
+        <img src="assets/imagenes/youtube.png" alt="YouTube" class="icono-red" />
+        <span>YouTube</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar principal (menú de la cabecera principal) -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a routerLink="/" class="navbar-logo">
+      <img src="assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-izquierda" />
+    </a>
+    <ul class="navbar-menu">
+      <li><a routerLink="/">Inicio</a></li>
+      <li><a routerLink="/ofertantes">Actividades</a></li>
+      <li><a routerLink="/consumidores">Comunidad</a></li>
+      <li><a routerLink="/">Contacto</a></li>
+
+
+      <!--  Esto es para que cuando el usuario haya iniciado sesión se sustituya el componente usuario-login
+        por perfil-->
+
+      <li [class.hidden]="isLoggedIn"><a routerLink="/login">Iniciar sesión</a></li>
+
+      <li [class.hidden]="!isLoggedIn">
+        <a [routerLink]="['/perfil', usuario?.id]">Tu perfil</a>
+      </li>
+      <li [class.hidden]="isLoggedIn">
+        <a routerLink="/registro">Regístrate</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+<!-- Sección cabecera "QUIENES SOMOS" -->
+<section class="ofertantes-header">
+  <div class="overlay"></div>
+  <div class="ofertantes-header-content">
+    <h1>QUIÉNES SOMOS</h1>
+  </div>
+</section>
+
+
+
+<!-- Sección QUIÉNES SOMOS - Contenido principal -->
+<section class="quienes-somos-contenido">
+  <div class="contenedor-texto">
+
+    <h2>Nuestra Historia</h2>
+    <p>
+      En <strong>Sevillanea</strong> creemos que Sevilla es mucho más que monumentos: es cultura, es vida, es arte y,
+      sobre todo, es una ciudad llena de experiencias esperando a ser descubiertas.
+      Nacimos con la idea de conectar a personas con actividades reales, cercanas y auténticas,
+      ofreciendo un punto de encuentro entre quienes organizan experiencias y quienes desean disfrutarlas.
+    </p>
+
+    <h2>¿Qué es Sevillanea?</h2>
+    <p>
+      Somos una plataforma digital dedicada a <strong>publicitar y gestionar actividades, talleres, eventos,
+        experiencias culturales y de ocio en Sevilla</strong>.
+      Nuestro objetivo es que cualquier persona —ya sea local o visitante— pueda encontrar fácilmente
+      todo tipo de actividades para disfrutar solo, con amigos o en comunidad.
+    </p>
+    <p>
+      A través de Sevillanea podrás:
+    </p>
+    <ul>
+      <li><strong>Anunciar tus actividades</strong> si eres organizador, empresa o particular.</li>
+      <li><strong>Publicar ofertas</strong> especiales para dar mayor visibilidad a tus eventos.</li>
+      <li><strong>Enviar demandas</strong> si buscas un tipo de actividad que aún no existe.</li>
+      <li><strong>Inscribirte directamente</strong> en experiencias publicadas por nuestra comunidad.</li>
+    </ul>
+
+    <h2>Nuestra Misión</h2>
+    <p>
+      Queremos impulsar la cultura, el ocio y la creatividad en Sevilla, ofreciendo un espacio
+      donde todos puedan participar.
+      Nuestra misión es <strong>facilitar el encuentro entre ofertantes y consumidores</strong>,
+      dando visibilidad a iniciativas locales y fomentando actividades accesibles, seguras y organizadas.
+    </p>
+
+    <h2>Una Comunidad que Crece</h2>
+    <p>
+      Sevillanea no es solo una plataforma: es una comunidad en crecimiento.
+      Tanto si ofreces actividades como si buscas nuevas experiencias, aquí tienes un lugar donde
+      compartir, descubrir y disfrutar Sevilla desde dentro.
+    </p>
+
+    <h2>¿Te unes?</h2>
+    <p>
+      Explora, participa, anuncia…
+      <strong>Sevillanea es tu espacio para vivir Sevilla como nunca.</strong>
+    </p>
+
+  </div>
+</section>
+
+
+
+<!-- Bloque de contacto tipo tarjetas -->
+<section class="contacto-bloque">
+  <div class="contacto-contenedor">
+
+    <!-- EMAIL -->
+    <div class="contacto-card">
+      <div class="circulo-contacto">
+        <img src="assets/imagenes/email.png" alt="Email" />
+      </div>
+      <span class="contacto-dato">infosevillanea.com</span>
+      <span class="contacto-titulo">EMAIL</span>
+    </div>
+
+    <!-- TELÉFONO -->
+    <div class="contacto-card">
+      <div class="circulo-contacto">
+        <img src="assets/imagenes/telefono.png" alt="Teléfono" />
+      </div>
+      <span class="contacto-dato">954 00 00 00</span>
+      <span class="contacto-titulo">TELÉFONO</span>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- SECCIÓN FINAL SEVILLANEA -->
+
+
+<section class="bloque-final-sevillanea">
+  <div class="bloque-container">
+    <div class="bloque-column">
+      <img src="../../../assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-final" />
+      <p>Descubre, organiza y comparte experiencias únicas en Sevilla. No solo puedes disfrutar de las mejores
+        actividades de ocio, sino
+        también convertirte en el organizador: publica tus propias propuestas y haz que otros usuarios vivan la ciudad a
+        través de tu arte, tu pasión y tu visión.</p>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Guía de...</h3>
+      <ul>
+        <li><a routerLink="/ofertantes" (click)="scrollTop()">Ofertas de actividades</a></li>
+        <li><a routerLink="/consumidores" (click)="scrollTop()">Demandas de actividades</a></li>
+      </ul>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Información</h3>
+      <ul>
+        <li><a routerLink="/quienesSomos" (click)="scrollTop()">Quiénes Somos</a></li>
+        <li><a routerLink="/privacidad" (click)="scrollTop()">Política de privacidad</a></li>
+        <li><a routerLink="/cookies" (click)="scrollTop()">Política de cookies</a></li>
+        <li><a routerLink="/contacto" (click)="scrollTop()">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="bloque-column">
+      <h3>¿Hablamos?</h3>
+      <p>📞 954 00 00 00</p>
+      <p>📧 infosevillanea.com</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER FINAL DE LA PÁGINA-->
+<footer class="py-4 bg-dark text-light text-center">
+  <div class="container">
+    <p class="mb-1">© 2025 <strong>Sevillanea</strong> · Vive Sevilla con arte</p>
+  </div>
+</footer>

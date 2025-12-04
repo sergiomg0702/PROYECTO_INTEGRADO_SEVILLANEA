@@ -1,0 +1,234 @@
+<!-- Barra superior de redes sociales (alineada a la derecha) -->
+<div class="top-bar-sevillanea" id="topBar">
+  <div class="topbar-content">
+    <div class="social-icons">
+      <a href="https://www.instagram.com/" target="_blank">
+        <img src="assets/imagenes/instagram.png" alt="Instagram" class="icono-red" />
+        <span>Instagram</span>
+      </a>
+      <a href="https://www.tiktok.com/es-419/" target="_blank">
+        <img src="assets/imagenes/tiktok.png" alt="TikTok" class="icono-red" />
+        <span>TikTok</span>
+      </a>
+      <a href="https://www.youtube.com/" target="_blank">
+        <img src="assets/imagenes/youtube.png" alt="YouTube" class="icono-red" />
+        <span>YouTube</span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- Navbar principal (menú de la cabecera principal) -->
+<nav class="navbar" id="navbar">
+  <div class="navbar-container">
+    <a routerLink="/" class="navbar-logo">
+      <img src="assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-izquierda" />
+    </a>
+    <ul class="navbar-menu">
+      <li><a routerLink="/">Inicio</a></li>
+      <li><a routerLink="/ofertantes">Actividades</a></li>
+      <li><a routerLink="/consumidores">Comunidad</a></li>
+      <li><a routerLink="/">Contacto</a></li>
+
+
+      <!--  Esto es para que cuando el usuario haya iniciado sesión se sustituya el componente usuario-login
+        por perfil-->
+
+      <li [class.hidden]="isLoggedIn"><a routerLink="/login">Iniciar sesión</a></li>
+
+      <li [class.hidden]="!isLoggedIn">
+        <a [routerLink]="['/perfil', usuario?.id]">Tu perfil</a>
+      </li>
+      <li [class.hidden]="isLoggedIn">
+        <a routerLink="/registro">Regístrate</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Sección cabecera "Actividad Solicitada" -->
+<section class="ofertantes-header">
+  <div class="overlay"></div>
+  <div class="ofertantes-header-content">
+    <h1>INFORMACIÓN DE LA ACTIVIDAD SOLICITADA</h1>
+  </div>
+</section>
+
+<!-- Información de la actividad solicitada-->
+
+<div class="container mt-4">
+  <div class="detalle-card">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+      <!-- Nombre -->
+      <div class="mb-3">
+        <label>Nombre:</label>
+        <input type="text" class="form-control" formControlName="nombre" required />
+        <div
+          [hidden]="!(form.controls['nombre'].invalid && (form.controls['nombre'].dirty || form.controls['nombre'].touched))">
+          <div [hidden]="!form.controls['nombre'].errors?.['required']" class="alert alert-danger">El nombre es
+            obligatorio</div>
+          <div [hidden]="!form.controls['nombre'].errors?.['minlength']" class="alert alert-danger">Debe tener al menos
+            2 caracteres</div>
+        </div>
+      </div>
+
+      <!-- Apellidos -->
+      <div class="mb-3">
+        <label>Apellidos:</label>
+        <input type="text" class="form-control" formControlName="apellidos" required />
+        <div
+          [hidden]="!(form.controls['apellidos'].invalid && (form.controls['apellidos'].dirty || form.controls['apellidos'].touched))">
+          <div [hidden]="!form.controls['apellidos'].errors?.['required']" class="alert alert-danger">Los apellidos son
+            obligatorios</div>
+          <div [hidden]="!form.controls['apellidos'].errors?.['minlength']" class="alert alert-danger">Debe tener al
+            menos 2 caracteres</div>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="mb-3">
+        <label>Email:</label>
+        <input type="email" class="form-control" formControlName="email" required />
+        <div
+          [hidden]="!(form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched))">
+          <div [hidden]="!form.controls['email'].errors?.['required']" class="alert alert-danger">El email es
+            obligatorio</div>
+          <div [hidden]="!form.controls['email'].errors?.['email']" class="alert alert-danger">Introduce un email válido
+          </div>
+        </div>
+      </div>
+
+      <!-- Teléfono -->
+      <div class="mb-3">
+        <label>Teléfono:</label>
+        <input type="text" class="form-control" formControlName="telefono" required />
+        <div
+          [hidden]="!(form.controls['telefono'].invalid && (form.controls['telefono'].dirty || form.controls['telefono'].touched))">
+          <div [hidden]="!form.controls['telefono'].errors?.['required']" class="alert alert-danger">El teléfono es
+            obligatorio</div>
+          <div [hidden]="!form.controls['telefono'].errors?.['pattern']" class="alert alert-danger">Debe tener 9 dígitos
+          </div>
+        </div>
+      </div>
+
+      <!-- Dirección -->
+      <div class="mb-3">
+        <label>Dirección:</label>
+        <input type="text" class="form-control" formControlName="direccion" required />
+        <div
+          [hidden]="!(form.controls['direccion'].invalid && (form.controls['direccion'].dirty || form.controls['direccion'].touched))">
+          <div [hidden]="!form.controls['direccion'].errors?.['required']" class="alert alert-danger">La dirección es
+            obligatoria</div>
+        </div>
+      </div>
+
+      <!-- Necesidades -->
+      <div class="mb-3">
+        <label>Necesidades:</label>
+        <input type="text" class="form-control" formControlName="descripcion_necesidades" required />
+        <div
+          [hidden]="!(form.controls['descripcion_necesidades'].invalid && (form.controls['descripcion_necesidades'].dirty || form.controls['descripcion_necesidades'].touched))">
+          <div [hidden]="!form.controls['descripcion_necesidades'].errors?.['required']" class="alert alert-danger">Las
+            necesidades son obligatorias</div>
+          <div [hidden]="!form.controls['descripcion_necesidades'].errors?.['minlength']" class="alert alert-danger">
+            Debe tener al menos 5 caracteres</div>
+        </div>
+      </div>
+
+      <!-- Presupuesto -->
+      <div class="mb-3">
+        <label>Presupuesto máximo (€):</label>
+        <input type="number" class="form-control" formControlName="presupuesto_maximo" required />
+        <div
+          [hidden]="!(form.controls['presupuesto_maximo'].invalid && (form.controls['presupuesto_maximo'].dirty || form.controls['presupuesto_maximo'].touched))">
+          <div [hidden]="!form.controls['presupuesto_maximo'].errors?.['required']" class="alert alert-danger">El
+            presupuesto es obligatorio</div>
+          <div [hidden]="!form.controls['presupuesto_maximo'].errors?.['min']" class="alert alert-danger">Debe ser mayor
+            que 0</div>
+        </div>
+      </div>
+
+      <!-- Actividad -->
+      <div class="mb-3">
+        <label>Actividad deseada:</label>
+        <select class="form-control" formControlName="actividad_id" required>
+          @for(a of listaOfertantes; track $index) {
+          <option [value]="a.id">
+            {{ a.actividad }} - {{ a.nombre }} {{ a.apellidos }}
+          </option>
+          }
+        </select>
+        <div
+          [hidden]="!(form.controls['actividad_id'].invalid && (form.controls['actividad_id'].dirty || form.controls['actividad_id'].touched))">
+          <div [hidden]="!form.controls['actividad_id'].errors?.['required']" class="alert alert-danger">Debe
+            seleccionar una actividad</div>
+        </div>
+      </div>
+
+      <!-- Botones -->
+      <div class="row mt-4">
+        <button class="btn btn-primary col-3" type="submit" [disabled]="!form.valid">
+          {{textoBoton}}
+        </button>
+        <button type="button" class="btn btn-secondary col-3 offset-1" (click)="scrollTop()" (click)="volver()">
+          Volver
+        </button>
+      </div>
+    </form>
+
+    <!-- Mensaje de éxito -->
+    <div class="alert alert-success mt-3" [hidden]="!mensajeExito">
+      {{mensajeExito}}
+    </div>
+  </div>
+</div>
+
+<!-- SECCIÓN FINAL SEVILLANEA -->
+
+
+<section class="bloque-final-sevillanea">
+  <div class="bloque-container">
+    <div class="bloque-column">
+      <img src="../../../assets/imagenes/sevillanea.png" alt="Logotipo Sevillanea" class="logo-final" />
+      <p>Descubre, organiza y comparte experiencias únicas en Sevilla. No solo puedes disfrutar de las mejores
+        actividades de ocio, sino
+        también convertirte en el organizador: publica tus propias propuestas y haz que otros usuarios vivan la ciudad a
+        través de tu arte, tu pasión y tu visión.</p>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Guía de...</h3>
+      <ul>
+        <li><a routerLink="/ofertantes" (click)="scrollTop()">Ofertas de actividades</a></li>
+        <li><a routerLink="/consumidores" (click)="scrollTop()">Demandas de actividades</a></li>
+      </ul>
+    </div>
+
+
+    <div class="bloque-column">
+      <h3>Información</h3>
+      <ul>
+        <li><a routerLink="/quienesSomos" (click)="scrollTop()">Quiénes Somos</a></li>
+        <li><a routerLink="/privacidad" (click)="scrollTop()">Política de privacidad</a></li>
+        <li><a routerLink="/cookies" (click)="scrollTop()">Política de cookies</a></li>
+        <li><a routerLink="/contacto" (click)="scrollTop()">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div class="bloque-column">
+      <h3>¿Hablamos?</h3>
+      <p>📞 954 00 00 00</p>
+      <p>📧 infosevillanea.com</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER FINAL DE LA PÁGINA-->
+<footer class="py-4 bg-dark text-light text-center">
+  <div class="container">
+    <p class="mb-1">© 2025 <strong>Sevillanea</strong> · Vive Sevilla con arte</p>
+  </div>
+</footer>

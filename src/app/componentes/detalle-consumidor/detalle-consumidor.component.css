@@ -1,0 +1,368 @@
+/* ------------------------------------------------------------
+   BARRA SUPERIOR DE REDES SOCIALES 
+------------------------------------------------------------ */
+.top-bar-sevillanea {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 40px;
+  background-color: #111; /* negro sólido */
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.topbar-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: flex-end; /*esto sirve para ponerle el icono de las redes sociales a la derecha   */
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.social-icons a {
+  display: flex;
+  align-items: center;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ffab60;
+}
+
+.icono-red {
+  height: 20px;
+  margin-right: 8px;
+}
+
+/* ------------------------------------------------------------
+    NAVBAR PRINCIPAL (MENÚ PRINCIPAL DE LA CABECERA)
+------------------------------------------------------------ */
+.navbar {
+  position: fixed;
+  top: 40px; /* debajo del menú negro */
+  width: 100%;
+  height: 100px;
+  background-color: #ffab60;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  transition: top 0.4s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+}
+
+.navbar-container {
+  max-width: 1500px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ------------------------------------------------------------
+    LOGO IZQUIERDO
+------------------------------------------------------------ */
+.logo-izquierda {
+  height: 100px;
+  width: 250px;
+  object-fit: contain;
+  transition: none;
+}
+
+/* ------------------------------------------------------------
+   MENÚ DE NAVEGACIÓN
+------------------------------------------------------------ */
+.navbar-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li a {
+  text-decoration: none;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.navbar-menu li a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: white;
+  transition: width 0.4s ease;
+}
+
+.navbar-menu li a:hover {
+  color: #ffdcb3;
+}
+
+.navbar-menu li a:hover::after {
+  width: 100%;
+}
+
+/* ------------------------------------------------------------
+   EFECTOS DE SCROLL
+------------------------------------------------------------ */
+.hidden {
+  opacity: 0;
+  transform: translateY(-100%);
+  display: none !important;
+}
+
+.fixed-top {
+  top: 0 !important;
+}
+
+/* ------------------------------------------------------------
+   SECCION DE DETALLE-OFERTA CON FONDO (ajustada)
+------------------------------------------------------------ */
+
+.ofertantes-header {
+  position: relative;
+  height: 55vh; 
+  background-image: url("../../../assets/imagenes/fondo_seccion.jpg");
+  background-attachment: fixed; 
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center 40%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 130px;
+  margin-bottom: 30px; 
+  overflow: hidden;
+}
+
+
+.ofertantes-header .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Contenido centrado */
+.ofertantes-header-content {
+  position: relative;
+  z-index: 2;
+}
+
+.ofertantes-header-content h1 {
+  color: white;
+  font-size: 3.5rem;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.4);
+  animation: fadeInDown 1.2s ease;
+}
+
+/* Animación de entrada */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .ofertantes-header {
+    height: 40vh;
+    background-attachment: scroll; 
+    margin-top: 120px;
+    margin-bottom: 25px;
+  }
+
+  .ofertantes-header-content h1 {
+    font-size: 2.3rem;
+  }
+}
+
+/* ------------------------------------------------------------
+   TARJETA CONTENEDORA FORMULARIO DETALLE CONSUMIDOR
+------------------------------------------------------------ */
+.detalle-card {
+  max-width: 900px; /* ancho máximo cómodo */
+  margin: 30px auto 80px auto; /* centrado horizontal, margen inferior para separación footer */
+  background: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* ================= FOOTER SEVILLANEA================= */
+
+.bloque-final-sevillanea {
+  background: linear-gradient(180deg, #ffb776, #ff9f4a);
+  border-top: 4px solid #c62828;
+  padding: 60px 25px;
+  font-family: "Merriweather", serif;
+  color: #2c2c2c;
+}
+
+.bloque-container {
+  max-width: 1400px;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.bloque-column {
+  flex: 1 1 240px;
+  min-width: 220px;
+}
+
+.logo-final {
+  width: 190px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0px 3px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Títulos de columna */
+.bloque-column h3 {
+  font-size: 20px;
+  font-family: "Playfair Display", serif;
+  color: #b71c1c;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+/* Línea decorativa bajo los títulos */
+.bloque-column h3::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background-color: #b71c1c;
+  border-radius: 2px;
+}
+
+/* Listas */
+.bloque-column ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.bloque-column ul li {
+  margin-bottom: 10px;
+}
+
+/* ENLACES llamativos con animación */
+.bloque-column ul li a {
+  text-decoration: none;
+  color: #2c2c2c;
+  font-weight: 500;
+  font-size: 16px;
+  position: relative;
+  transition: color 0.25s ease;
+}
+
+/* Subrayado animado */
+.bloque-column ul li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: #b71c1c;
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.bloque-column ul li a:hover {
+  color: #b71c1c;
+}
+
+.bloque-column ul li a:hover::after {
+  width: 100%;
+}
+
+/* Textos del bloque final */
+.bloque-column p {
+  margin: 6px 0;
+  font-size: 15px;
+  line-height: 1.6;
+  font-family: "Merriweather", serif;
+  color: #3a3a3a;
+}
+
+.btn-primary {
+  background-color: #ffab60 !important;
+  border-color: #ffab60 !important;
+  color: #fff !important;
+}
+
+/* ================= FOOTER BOTTOM (FINAL) ================= */
+
+footer.py-4 {
+  background-color: #121212;
+  color: #f5f5f5;
+  padding: 25px 10px;
+  border-top: 3px solid #b71c1c;
+}
+
+footer p {
+  margin: 0;
+  font-size: 15.5px;
+  letter-spacing: 0.5px;
+  font-family: "Playfair Display", serif;
+  opacity: 0.9;
+  transition: 0.3s ease;
+}
+
+/* Efecto glow suave en hover */
+footer p:hover {
+  opacity: 1;
+  text-shadow: 0px 0px 8px rgba(255, 160, 122, 0.6);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .bloque-container {
+    flex-direction: column;
+  }
+
+  .bloque-column {
+    margin-bottom: 20px;
+  }
+}
